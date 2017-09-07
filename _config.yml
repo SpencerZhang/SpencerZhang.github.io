@@ -10,7 +10,7 @@ github_repo: "https://github.com/SpencerZhang/SpencerZhang.github.io.git" # you 
 
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
-sidebar-about-description: "Goals determine what you going to be!"
+sidebar-about-description: "虚而不屈，动而愈出。多言数穷，不如守中!"
 sidebar-avatar: /img/about-Spencer.jpeg      # use absolute URL, seeing it's used in both `/` and `/about/`
 
 
