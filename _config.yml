@@ -69,7 +69,7 @@ disqus_username: https-spencerzhang-github-io
 
 # Analytics settings
 # Baidu Analytics
-#ba_track_id: xxxxxx
+ba_track_id: 4999fb5102655ffa2234769947d18448
 
 # Google Analytics
 ga_track_id: 'UA-106047273-1'            # Format: UA-xxxxxx-xx
