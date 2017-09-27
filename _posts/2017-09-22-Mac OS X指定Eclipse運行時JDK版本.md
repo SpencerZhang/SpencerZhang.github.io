@@ -39,3 +39,5 @@ lrwxr-xr-x  1 root  wheel  79 Sep 21  2016 /usr/libexec/java_home -> /System/Lib
 /Library/Java/JavaVirtualMachines/jdk1.8.0_74.jdk/Contents/Home/bin/java
 -vmargs
 ```
+
+--EOF--
