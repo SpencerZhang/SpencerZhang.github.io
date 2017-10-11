@@ -1,7 +1,7 @@
 {
-  "name": "Hux Blog",
-  "short_name": "Hux Blog",
-  "description": "About an engineer & designer who loves web.",
+  "name": "Spencer Blog",
+  "short_name": "Spencer Blog",
+  "description": "虚而不屈，动而愈出。多言数穷，不如守中!",
   "icons": [{
     "src": "icons/128.png",
     "sizes": "128x128",
