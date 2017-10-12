@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+Disallow: /_includes
+Disallow: /_layouts
+Disallow: /css
+Disallow: /fonts
+Disallow: /img
+Disallow: /resource
