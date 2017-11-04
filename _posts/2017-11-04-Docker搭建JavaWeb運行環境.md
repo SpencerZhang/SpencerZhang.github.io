@@ -15,7 +15,7 @@ tags:
 
 # 安裝Docker
 
-## 推薦個文檔： <http://www.widuu.com/chinese_docker/index.html/>
+## 推薦： <http://www.widuu.com/chinese_docker/index.html/>
 
 ## 安裝Docker之後執行命令，查看所有的鏡像
 
