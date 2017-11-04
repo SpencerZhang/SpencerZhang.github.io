@@ -1,11 +1,10 @@
-
 ---
 layout:     post
 title:      Docker 安裝CentOS7 搭建Java Web 運行環境
 subtitle:   Docker搭建Java Web 運行環境
 date:       2017-11-04
 author:     Spencer
-header-img: img/post-bg-c.jpg
+header-img: img/post-bg-desk.jpg
 catalog: true
 tags:
     - Docker
