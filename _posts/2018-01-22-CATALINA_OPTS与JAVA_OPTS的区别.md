@@ -41,7 +41,7 @@ export JAVA_OPTS="-server -Xms2g -Xmx2g -Xmn1g -Xss512K -XX:MetaspaceSize=512m
 ```
 
 #### 然后又在网络查询是否有同样遇到这个问题。
-找到了<https://www.zhihu.com/question/35626538#answer-21186674/>,其中R大还做了另外2个环境变量参数以及优先级。
+找到了<https://www.zhihu.com/question/35626538#answer-21186674/>,其中R大还解释了另外2个环境变量参数以及优先级。
 
 推荐R大 <https://www.zhihu.com/people/rednaxelafx/activities/>
 
