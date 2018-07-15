@@ -25,8 +25,12 @@ tags:
 
 ## Tomcat 数据源配置
 
+```xml
 <Resource auth="Container" driverClassName="oracle.jdbc.driver.OracleDriver" name="jdbc/xxx" password="xxx" type="javax.sql.DataSource" url="jdbc:oracle:thin:@127.0.0.1:1521/orcl" username="xxx"/>
+```
 
 或者
 
+```xml
 <Resource auth="Container" driverClassName="oracle.jdbc.driver.OracleDriver" name="jdbc/xxx" password="xxx" type="javax.sql.DataSource" url="jdbc:oracle:thin:@127.0.0.1:1521:orcl" username="xxx"/>
+```
