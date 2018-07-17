@@ -35,13 +35,13 @@ end fn_getEmployees;
 ```PL/SQL
 declare
 Begin
-  DBMS_RLS.Add_Policy(Object_Schema   => 'oracle_train', --数据表(或视图)所在的Schema名称
-                      Object_Name     => 'EMPLOYEES', --数据表(或视图)的名称
-                      Policy_Name     => 'T_EMPLOYEES', --POLICY的名称，主要用于将来对Policy的管理
-                      Function_Schema => 'oracle_train', --返回Where子句的函数所在Schema名称
+  DBMS_RLS.Add_Policy(Object_Schema   => 'oracle_train',    --数据表(或视图)所在的Schema名称
+                      Object_Name     => 'EMPLOYEES',       --数据表(或视图)的名称
+                      Policy_Name     => 'T_EMPLOYEES',     --POLICY的名称，用于将来对Policy的管理
+                      Function_Schema => 'oracle_train',    --返回Where子句的函数所在Schema名称
                       Policy_Function => 'fn_getEmployees', --返回Where子句的函数名称
-                      Statement_Types => 'Select', -- DML类型，如 'Select,Insert,Update,Delete'
-                      Enable          => True --是否启用，值为'True'或'False'
+                      Statement_Types => 'SELECT',          -- DML类型，如 'SELECT,INSERT,UPDATE,DELETE'
+                      Enable          => TRUE               --是否启用，值为'TRUE'或'FALSE'
                       );
 end;
 ```
@@ -52,12 +52,25 @@ end;
 declare
 Begin
   DBMS_RLS.enable_policy(Object_Schema   => 'oracle_train', --数据表(或视图)所在的Schema名称
-                      Object_Name     => 'EMPLOYEES', --数据表(或视图)的名称
-                      Policy_Name     => 'T_EMPLOYEES', --POLICY的名称，主要用于将来对Policy的管理
-                      Enable          => FALSE --是否启用，值为'True'或'False'
+                      Object_Name     => 'EMPLOYEES',       --数据表(或视图)的名称
+                      Policy_Name     => 'T_EMPLOYEES',     --POLICY的名称，主要用于将来对Policy的管理
+                      Enable          => FALSE              --是否启用，值为'TRUE'或'FALSE'
                       );
 end;
 ```
+
+#### 删除策略
+
+```PL/SQL
+declare
+Begin
+  DBMS_RLS.drop_policy(Object_Schema   => 'oracle_train', --数据表(或视图)所在的Schema名称
+                       Object_Name     => 'EMPLOYEES',    --数据表(或视图)的名称
+                       Policy_Name     => 'T_EMPLOYEES'   --POLICY的名称，用于将来对Policy的管理
+                      );
+end;
+```
+
 #### 其他存储过程详见PACKAGE:DBMS_RLS
 #### 查看当前用户拥有的策略
 
@@ -72,4 +85,4 @@ SELECT * FROM dba_policies WHERE object_owner = 'ORACLE_TRAIN';
 ![](https://spencerzhang.github.io/resource/15317983817528.jpg)
 
 
-
+## 我们从结果来看，是把策略函数返回值自动加到where条件
