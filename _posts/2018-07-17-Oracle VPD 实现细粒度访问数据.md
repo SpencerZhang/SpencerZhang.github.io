@@ -86,3 +86,5 @@ SELECT * FROM dba_policies WHERE object_owner = 'ORACLE_TRAIN';
 
 
 ## 我们从结果来看，是把策略函数返回值自动加到where条件
+
+--EOF--
