@@ -69,7 +69,7 @@ gitalk:
   enable: true    #是否开启Gitalk评论
   clientID: 570493c159f5ba3d2a3d                            #生成的clientID
   clientSecret: b8089068efc89ad1eaa0c8d6a8f924dd5d773471    #生成的clientSecret
-  repo: SpencerZhang.github.io    #仓库名称
+  repo: https://github.com/SpencerZhang/SpencerZhang.github.io/issues    #仓库名称
   owner: SpencerZhang    #github用户名
   admin: SpencerZhang
   distractionFreeMode: true #是否启用类似FB的阴影遮罩
