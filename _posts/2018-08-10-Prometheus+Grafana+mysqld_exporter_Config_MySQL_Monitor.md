@@ -321,7 +321,7 @@ http://127.0.0.1:9104/
  * targets，连接的主机
  * instance，数据库实例的标签明
 
-### 重启prometheus，点击导航栏中的status->targets可以看到，mysql的exporter已经集成。
+### 重启Prometheus，点击导航栏中的status->targets可以看到，MySQL的exporter已经集成。
 
 ## Grafana 中配置 Prometheus
 ### 点击Add data source
