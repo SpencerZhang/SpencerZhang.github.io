@@ -336,7 +336,7 @@ http://127.0.0.1:9104/
 ### 点击Back，回到首页
 
 ## 添加Dashboards,我们选择导入json配置文件，从<https://github.com/percona/grafana-dashboards>获取项目中的dashboards下载MySQL_Overview.json
-也可直接下载：![MySQL_Overview.json](https://spencerzhang.github.io/resource/MySQL_Overview.json)
+也可直接下载：[MySQL_Overview.json](https://spencerzhang.github.io/resource/MySQL_Overview.json)
 ![](https://spencerzhang.github.io/resource/15338694253819.jpg)
 ### 点击Upload .json File,选择文件导入
 ![](https://spencerzhang.github.io/resource/15338697907398.jpg)
