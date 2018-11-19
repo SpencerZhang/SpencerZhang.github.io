@@ -35,12 +35,13 @@ tags:
 ```
  
 ## 修改goaccess.conf
+```
 time-format %H:%M:%S
 date-format %d/%b/%Y
 log-format %h %^[%d:%t %^] "%r" %s %b "%R" "%u"
 log-file /usr/local/nginx/logs/lmp.access.log
 port 7890
-
+```
 ## 修改Nginx conf
 ### 启用log_format
 ```shell
@@ -54,7 +55,7 @@ access_log  logs/lmp.access.log  main;
 #GoAccess
 location /report.html {
 	allow 192.168.1.0/24;#根据需要配置访问ip段或具体某个ip
-deny all;
+    deny all;
 	alias /usr/local/nginx/html/report.html;
 }
 
