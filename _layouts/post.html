@@ -22,6 +22,46 @@ layout: default
     }
     {% endif %}
 </style>
+<!-- 打赏 start  -->
+<style type="text/css">
+    #rewardButton span {
+        display: inline-block;
+        width: 44px;
+        height: 44px;
+        border-radius: 100%;
+        color: #fff;
+        font-weight: 400;
+        font-style: normal;
+        font-variant: normal;
+        font-stretch: normal;
+        font-size: 18px;
+        font-family: "Microsoft Yahei";
+        background: #f44336;
+        text-align: center;
+        line-height: 44px;
+    }
+
+    #rewardButton {
+        cursor: pointer;
+        border: 0;
+        outline: 0;
+        border-radius: 100%;
+        padding: 0;
+        margin: 0;
+        letter-spacing: normal;
+        text-transform: none;
+        text-indent: 0px;
+        text-shadow: none;
+    }
+
+    #QR img {
+        width: 180px;
+        max-width: 100%;
+        display: inline-block;
+        margin: 0.8em 2em 0 2em;
+    }
+</style>
+<!-- 打赏 end  -->
 <header class="intro-header" >
     <div class="header-mask"></div>
     <div class="container">
@@ -61,6 +101,29 @@ layout: default
 				{{ content }}
 
                 <hr style="visibility: hidden;">
+                <!-- 打赏 start  -->
+                <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+                    <div></div>
+                    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+                        <span>赏</span>
+                    </button>
+                    <div id="QR" style="display: none;">
+
+                        <div id="wechat" style="display: inline-block">
+                            <!--<img id="wechat_qr" src="https://spencerzhang.github.io/resource/weixin-s.png" alt="Spencer WeChat Pay" />-->
+                            <img id="wechat_qr" src="https://spencerzhang.github.io/resource/weixin-s.jpg" alt="Spencer WeChat Pay" />
+                            <p>微信打赏</p>
+                        </div>
+
+
+                        <div id="alipay" style="display: inline-block">
+                            <img id="alipay_qr" src="https://spencerzhang.github.io/resource/alipay-s.png" alt="Spencer Alipay" />
+                            <p>支付宝打赏</p>
+                        </div>
+
+                    </div>
+                </div>
+                <!-- 打赏 end  -->
                 <!--licenses start -->
                 <div style="font-size:12px;border-bottom: #ddd 1px solid; BORDER-LEFT: #ddd 1px solid; BACKGROUND: #f6f6f6; HEIGHT: 130px; BORDER-TOP: #ddd 1px solid; BORDER-RIGHT: #ddd 1px solid">
                     <div style="MARGIN-TOP: 10px; FLOAT: left; MARGIN-LEFT: 5px; MARGIN-RIGHT: 10px">
