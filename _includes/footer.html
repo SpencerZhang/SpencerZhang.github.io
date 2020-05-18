@@ -1,70 +1,7 @@
 <!-- Footer -->
-<!-- 打赏 start  -->
-<style type="text/css">
-    #rewardButton span {
-        display: inline-block;
-        width: 44px;
-        height: 44px;
-        border-radius: 100%;
-        color: #fff;
-        font-weight: 400;
-        font-style: normal;
-        font-variant: normal;
-        font-stretch: normal;
-        font-size: 18px;
-        font-family: "Microsoft Yahei";
-        background: #f44336;
-        text-align: center;
-        line-height: 44px;
-    }
-
-    #rewardButton {
-        cursor: pointer;
-        border: 0;
-        outline: 0;
-        border-radius: 100%;
-        padding: 0;
-        margin: 0;
-        letter-spacing: normal;
-        text-transform: none;
-        text-indent: 0px;
-        text-shadow: none;
-    }
-
-    #QR img {
-        width: 180px;
-        max-width: 100%;
-        display: inline-block;
-        margin: 0.8em 2em 0 2em;
-    }
-</style>
-<!-- 打赏 end  -->
 <footer>
     <div class="container">
         <div class="row">
-            <!-- 打赏 start  -->
-            <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
-                <div></div>
-                <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
-                    <span>赏</span>
-                </button>
-                <div id="QR" style="display: none;">
-
-                    <div id="wechat" style="display: inline-block">
-                        <!--<img id="wechat_qr" src="https://spencerzhang.github.io/resource/weixin-s.png" alt="Spencer WeChat Pay" />-->
-                        <img id="wechat_qr" src="https://spencerzhang.github.io/resource/weixin-s.jpg" alt="Spencer WeChat Pay" />
-                        <p>微信打赏</p>
-                    </div>
-
-
-                    <div id="alipay" style="display: inline-block">
-                        <img id="alipay_qr" src="https://spencerzhang.github.io/resource/alipay-s.png" alt="Spencer Alipay" />
-                        <p>支付宝打赏</p>
-                    </div>
-
-                </div>
-            </div>
-            <!-- 打赏 end  -->
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 <ul class="list-inline text-center">
                     {% if site.RSS %}
