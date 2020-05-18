@@ -4,7 +4,7 @@ title:      Mac搭建Redis Cluster
 subtitle:   Redis Cluster
 date:       2020-05-07
 author:     Spencer
-header-img: img/post-bg-desk.jpeg
+header-img: img/post-bg-desk.jpg
 catalog: true
 tags:
     - Redis Cluster

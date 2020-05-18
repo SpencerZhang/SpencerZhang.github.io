@@ -4,7 +4,7 @@ title:      Java代码覆盖率JaCoCo
 subtitle:   JaCoCo
 date:       2020-02-15
 author:     Spencer
-header-img: img/post-bg-desk.jpeg
+header-img: img/post-bg-desk.jpg
 catalog: true
 tags:
     - Java
