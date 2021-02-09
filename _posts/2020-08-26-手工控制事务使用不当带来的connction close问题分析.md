@@ -14,7 +14,7 @@ tags:
 
 # 使用TransactionStatus手工控制事务，发生例外不处理收到rollback带来的connction close问题分析
 
-## 话不多说show codes：
+## 话不多说show code：
 
 ```java
 		transactionStatus = manager.getTransaction(new DefaultTransactionDefinition());
