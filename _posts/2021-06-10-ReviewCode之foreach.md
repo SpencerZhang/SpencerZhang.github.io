@@ -58,7 +58,12 @@ projectList.foreach(p -> {
   projectIdListTmp.add(p.getProjectId());
 });
 // 3、在sql中sum求和financeAamount，
-List quotationList = quotationMapper.selectSumAmount(pk数组);
+if(!projectIdListTmp.isEmpty()) {
+	List quotationList = quotationMapper.selectSumAmount(projectIdListTmp.toArray(new Long[0]));
+} else {
+  // 当前厂商没有进件，
+  financeAamount = 0;
+}
 ```
 
 ### 建议：
