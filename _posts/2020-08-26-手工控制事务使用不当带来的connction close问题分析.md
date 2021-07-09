@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      手工控制事务使用不当带来的connction close问题分析
+title:      手工控制事务使用不当引发的connction close问题分析
 subtitle:   connction close
 date:       2020-08-26
 author:     Spencer
@@ -12,28 +12,28 @@ tags:
 
 ---
 
-# 使用TransactionStatus手工控制事务，发生例外不处理收到rollback带来的connction close问题分析
+# 使用TransactionStatus手工控制事务，发生例外不处理rollback带来的connction close问题分析
 
 ## 话不多说show code：
 
 ```java
-		transactionStatus = manager.getTransaction(new DefaultTransactionDefinition());
-        Example example = new Example(TestDemo.class, true, true);
-        testDemoMapper.deleteByExample(example);
-        TestDemo td = new TestDemo();
-        td.setCity("demo");
-        td.setProvince("demo");
-        td.setDescription("demo");
-        td.setEnabledFlag("Y");
-        td.set__status(DTOStatus.ADD);
-        List<TestDemo> tds = new ArrayList<>(1);
-        tds.add(td);
-        // try {
-            self().batchUpdate(requestContext, tds);
-            manager.commit(transactionStatus);
-        // } catch (Exception e) {
-        //     manager.rollback(transactionStatus);
-        // }
+transactionStatus = manager.getTransaction(new DefaultTransactionDefinition());
+Example example = new Example(TestDemo.class, true, true);
+testDemoMapper.deleteByExample(example);
+TestDemo td = new TestDemo();
+td.setCity("demo");
+td.setProvince("demo");
+td.setDescription("demo");
+td.setEnabledFlag("Y");
+td.set__status(DTOStatus.ADD);
+List<TestDemo> tds = new ArrayList<>(1);
+tds.add(td);
+// try {
+		self().batchUpdate(requestContext, tds);
+    manager.commit(transactionStatus);
+// } catch (Exception e) {
+//     manager.rollback(transactionStatus);
+// }
 ```
 
 此段代码模拟实际业务代码复现问题，当表中某个新添加字段未更新。业务处理也没有try catch，发生例外时去执行DDL语句添加字段。此时可以观测到此表被锁。因为线上环境不提供kill session权限，干等1个小时等锁自己消失后。再次访问环境出现了connction close错误提示，刷新一下不影响功能使用。但是很隔应人。
