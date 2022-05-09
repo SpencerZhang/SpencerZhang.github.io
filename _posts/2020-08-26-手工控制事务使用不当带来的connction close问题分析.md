@@ -1,4 +1,5 @@
 ---
+
 layout:     post
 title:      手工控制事务使用不当引发的connction close问题分析
 subtitle:   connction close
@@ -75,18 +76,21 @@ DruidConnectionHolder#reset 重置holder
 | PROPAGATION_REQUIRES_NEW  | 新建事务，如果当前存在事务，把当前事务挂起                   |
 | PROPAGATION_NOT_SUPPORTED | 以非事务方式执行操作，如果当前存在事务，就把当前事务挂起     |
 | PROPAGATION_NEVER         | 以非事务方式执行，如果当前存在事务，则抛出异常               |
-| PROPAGATION_SUPPORTS      | 支持当前事务，如果当前没有事务，就以非事务方式执行。         |
-| PROPAGATION_NESTED        | 如果当前存在事务，则在嵌套事务内执行。如果当前没有事务，则执行与PROPAGATION_REQUIRED类似的操作。 |
+| PROPAGATION_NESTED        | 如果当前存在事务，则在嵌套事务内执行。嵌套的事务可以独立与当前事务进行单独地提交或者回滚。如果当前没有事务，则执行与PROPAGATION_REQUIRED类似的操作。 |
 
-@Transactional 加在private方法上, 无效
-@Transactional 加在未加入接口的public方法上, 再通过普通接口方法调用, 无效
-@Transactional 加在接口方法上, 无论下面调用的是private或public方法, 都有效
-@Transactional 加在接口方法上, 被本类普通接口方法直接调用, 无效
-@Transactional 加在接口方法上, 被本类普通接口方法通过接口调用, 有效
-@Transactional 加在接口方法上, 被其他类的接口方法调用, 有效
-@Transactional 加在接口方法上, 被其他类的私有方法调用后, 有效
+有效失效场景：
 
-Transactional是否生效, 仅取决于是否加载于接口方法, 并且是否通过接口方法调用(而不是本类调用)。这里想想为什么我们要在接口要实现ProxySelf<T>
+| @Transactional                                   | 是否有效 |
+| ------------------------------------------------ | -------- |
+| private方法上                                    | 无效     |
+| 未加入接口的public方法上, 再通过普通接口方法调用 | 无效     |
+| 接口方法上, 被本类普通接口方法直接调用           | 无效     |
+| 接口方法上, 无论下面调用的是private或public方法  | 有效     |
+| 接口方法上, 被本类普通接口方法通过接口调用       | 有效     |
+| 接口方法上, 被其他类的接口方法调用               | 有效     |
+| 接口方法上, 被其他类的私有方法调用后             | 有效     |
+
+Transactional是否生效, 仅取决于是否加载于接口方法, 并且是否通过接口方法调用(而不是本类调用)。这里想想为什么我们要在接口要实现AopProxy<T>
 
 如有错误的地方欢迎指正。
 
