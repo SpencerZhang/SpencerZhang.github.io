@@ -137,7 +137,7 @@ CompletableFuture.allOf(cfList.toArray(new CompletableFuture[0])).join();
 
 - 1、变量线程安全问题，使用线程安全实现类
 - 2、代理自己问题，目前的方案是先获取，传递给cf，完成后清理
-#### 一、AopProxy 
+#### AopProxy 
 
 ```java
 // 多线程异步之前获取当前的代理对象
