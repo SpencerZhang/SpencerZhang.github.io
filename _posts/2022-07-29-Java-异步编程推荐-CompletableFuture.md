@@ -20,7 +20,86 @@ tags:
 
 * 参考[文章1](https://colobu.com/2016/02/29/Java-CompletableFuture/)、[文章2](https://ericfu.me/completable-future-not-so-bad/)
 
+### CompletableFuture初始
 
+#### 结构如下：
+![Future](https://spencerzhang.github.io/resource/cf-1.png)
+![CompletionStage](https://spencerzhang.github.io/resource/cf-1.png)
+
+#### 包括38个方法，其中36个是如下形式
+
+```java
+public CompletionStage<?> somethingAsync(...,Executor executor);
+public CompletionStage<?> somethingAsync(...);
+与somethingAsync(...,ForkJoinPool.comonPool());一样
+public CompletionStage<?> something(...);
+```
+
+#### 余下12个方法，其中9个有3种形成
+
+Apply ==> function from input to R, result is a CompletableFuture<R>Accept ==> consumer of input , result is a CompletableFuture<Void>Run ==> just execute a Runnable, result is a CompletableFuture<Void>
+
+##### 单参数方法，如下：thenApply ， thenAccept ， thenRun##### 二元 <<or>>，如下：applyToEither , acceptEither , runAfterEither##### 二元 <<and>>，如下：thenCombine , thenAcceptBoth , runAfterBoth
+
+#### 余下3类方法，如下：##### thenCompose : Function from input to CompletableFuture<R>, result CompletableFuture<R>; **a.k.a flatMap**  ##### handle :Function from input and exception to R, result CompletableFuture<R> ##### whenComplete :Consumer from input and exceptionSimilar to Accept methods aboveResult – the same as input
+
+#### 余下2个方法，无异步方法，如下：
+public CompletionStage<T> exceptionally(Function<Throwable, ? extends T> fn);public CompletableFuture<T> toCompletableFuture();
+
+## 使用简例
+```java
+// 调用方
+CompletableFuture<String> cf = doSomething();
+// 等待执行完成
+String result = cf.get();
+
+// 创建CompletableFuture有返回值
+CompletableFuture<String> cf1 = CompletableFuture.supplyAsync(()-> "do biz1", taskExecutor);
+
+// 创建CompletableFuture无返回值
+CompletableFuture<Void> cf1 = CompletableFuture.runAsync(()->{
+//do biz1
+}, taskExecutor);
+
+// nesting(嵌套)和composing(组合)
+CompletableFuture<String> cf2 = cf1.thenApply(result -> "cf2"+result);
+CompletableFuture<String> cf3 = cf2.thenApply(result -> "cf3"+result);
+CompletableFuture<String> cf4 = cf3.thenApply(result -> "cf4"+result);
+CompletableFuture<String> fcpe = cf4.thenCompose(result -> "composing"+result);
+
+// combining(合并)
+CompletableFuture<String> f1 = CompletableFuture.supplyAsync(()->"do biz1", taskExecutor);
+CompletableFuture<String> f2 = CompletableFuture.supplyAsync(()->"do biz2", 
+
+CompletableFuture<String> fcbe = f1.thenCombine(f2,(result1,result2) -> {
+// do biz
+});
+
+//返回其中一个，不关心哪个先执行完成
+CompletableFuture<String> f1 = doSomething1();
+CompletableFuture<String> f2 = doSomething2();
+CompletableFuture<String> fs = f1.applyToEither(f2, c -> {
+// do biz
+});
+
+// 最终结果
+CompletableFuture<String> cf2 = cf1.thenApply(result -> "cf2"+result);
+cf2.thenAccept(result -> "final value"+result);
+
+// 错误响应
+cf2.exceptionally(e -> alertMessage(e));
+// 或者
+cf2.handle((result, e) -> {
+    if(e != null) {
+        alertMessage(e);
+        return null;
+    } else {
+        return result;
+    }
+});
+```
+
+## 结合去年10月份性能优化
 ### 伪代码1
 
 ```java
@@ -69,3 +148,4 @@ CompletableFuture.allOf(cfList.toArray(new CompletableFuture[0])).join();
 如有错误的地方欢迎指正。
 
 --EOF--
+
