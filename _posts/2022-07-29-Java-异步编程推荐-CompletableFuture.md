@@ -137,7 +137,20 @@ CompletableFuture.allOf(cfList.toArray(new CompletableFuture[0])).join();
 
 - 1、变量线程安全问题，使用线程安全实现类
 - 2、代理自己问题，目前的方案是先获取，传递给cf，完成后清理
-- 3、当前用户获取问题，处理方式同2
+#### 一、AopProxy 
+
+```java
+// 多线程异步之前获取当前的代理对象
+ CompletableFuture.runAsync(() -> {
+   // 业务逻辑
+   self().xxx();
+ });
+```
+- 3、当前用户获取问题，处理方式
+#### 推荐解决方案，使用线程池并且使用Srping Security的DelegatingSecurityContextExecutorService包装一层即可实现
+```java
+new DelegatingSecurityContextExecutorService(executor)
+```
 
 * 参考[文章3](https://tech.meituan.com/2022/05/12/principles-and-practices-of-completablefuture.html)
 
